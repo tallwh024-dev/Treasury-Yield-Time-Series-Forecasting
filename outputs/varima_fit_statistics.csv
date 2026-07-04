@@ -1,0 +1,2 @@
+model,AICc,AIC,BIC
+VARIMA(1,1,1),calculated in script,reported by model,reported by model

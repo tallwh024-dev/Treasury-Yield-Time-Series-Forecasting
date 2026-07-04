@@ -1,0 +1,60 @@
+---
+title: "Final Treasury Yield Forecasting Project: Univariate and Multivariate Time-Series Analysis"
+author: "Jackson Wang"
+date: "2026-06-12"
+output: pdf_document
+---
+
+# Introduction
+
+This report develops forecasting models for monthly U.S. Treasury yields using the 1-year, 2-year, 3-year, and 5-year constant maturity series from FRED. The data run from June 1976 through May 2026.
+
+The goal is to compare several univariate and multivariate time-series models for forecasting Treasury yield movements. The report estimates AR(1), AR(p), ETS(ANN), VAR, and VARIMA-style models. Model fit is compared using AICc and BIC, and the final results include four-month forecasts.
+
+# Reproducible script
+
+The full cleaned R script is available at:
+
+```text
+scripts/part2_forecasting_models.R
+```
+
+# Background
+
+Part 1 shows that the original Treasury yield series have long-term interest-rate cycles and are not stationary. Therefore, the models in Part 2 use first differences:
+
+- d_GS1
+- d_GS2
+- d_GS3
+- d_GS5
+
+# Models
+
+## AR(1)
+
+AR(1) models are estimated separately for each transformed yield series. The AR(1) terms are statistically significant, while the constants are not significant.
+
+## AR(p)
+
+AR(p) models are selected using BIC across lag orders 1 through 12.
+
+Selected lag orders:
+
+| Maturity | Selected p |
+|---|---:|
+| d_GS1 | 6 |
+| d_GS2 | 6 |
+| d_GS3 | 2 |
+| d_GS5 | 2 |
+
+## ETS(ANN)
+
+ETS(ANN) models are included as benchmark exponential smoothing models.
+
+## VAR
+
+VAR models are included to capture cross-maturity relationships among Treasury yield changes.
+
+# Conclusion
+
+The models generally forecast small monthly changes near zero, consistent with the transformed series having near-zero long-run average changes. AR(p) models improve on AR(1), and VAR models are useful because Treasury yield changes across maturities move together.

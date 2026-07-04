@@ -1,0 +1,15 @@
+R packages used:
+
+quantmod
+tsibble
+dplyr
+tidyr
+ggplot2
+lubridate
+forecast
+fpp3
+GGally
+tsbox
+tseries
+moments
+MTS

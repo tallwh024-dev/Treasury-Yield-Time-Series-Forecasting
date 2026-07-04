@@ -1,0 +1,36 @@
+---
+output: pdf_document
+---
+
+**To:** CFRM 586 Manager  
+**From:** Jackson Wang  
+**Date:** May 19, 2026  
+**Subject:** Treasury Yields Forecasting (Part 1)
+
+# Executive Summary
+
+This report reviews the monthly 1-year, 2-year, 3-year, and 5-year Treasury yield series from June 1976 to May 2026. The analysis includes time series plots, STL decomposition, outlier detection, stationarity testing, and pairwise comparisons using stationary transformed data.
+
+Overall, the Treasury yields show strong positive correlation across maturities, long-term trend behavior, low seasonality, and nonstationarity. First differences are used to create stationary series for later analysis.
+
+# Reproducible script
+
+The full cleaned R script is available at:
+
+```text
+scripts/part1_exploration.R
+```
+
+# Main analysis steps
+
+1. Download GS1, GS2, GS3, and GS5 Treasury yields from FRED.
+2. Plot each Treasury yield series.
+3. Run STL decomposition for the 3-year Treasury yield.
+4. Detect outliers using STL remainder values and IQR rules.
+5. Test stationarity using KPSS-based diagnostics.
+6. Transform nonstationary yield levels using first differences.
+7. Compare transformed yield changes across maturities.
+
+# Main conclusion
+
+The original Treasury yield levels are not stationary. The first-differenced series are more appropriate for the forecasting models used in Part 2.
